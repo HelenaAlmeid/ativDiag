@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Pessoa {
     private String nome;
     private String cpf;
@@ -10,6 +13,69 @@ public class Pessoa {
         this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
 
+    }
+
+    public String getCpf(){
+        return cpf;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public static void imprimirLinha(int quantidade){
+        String linha = "";
+        for (int i = 0; i < quantidade; i++){
+            linha += "-";
+        }
+        imprimir(linha);
+    }
+
+
+    public static void imprimir(String conteudo){
+        System.out.println(conteudo);
+    }
+
+
+    public static void imprimirCentralizado(String texto, int quant){
+        int espaco = (quant - texto.length()) /2;
+        if (espaco > 0){
+                String esp = " ".repeat(espaco);
+                imprimir(esp + texto + esp);
+        }
+        else{
+            imprimir(texto);
+        }
+    }
+
+        public static String solicitarString(String pergunta){
+        Scanner scaneer = new Scanner(System.in);
+        while (true){
+            imprimir(pergunta);
+            try {
+                return scaneer.nextLine();
+            } catch (InputMismatchException e) {
+                imprimir("Entrada Inválida!\nTente Novamente!");
+                imprimirLinha(50);
+                scaneer.next();
+            }
+        }
+    }
+
+
+    public static int solicitarInt(String pergunta){
+        Scanner scaneer = new Scanner(System.in);
+        while (true){
+            imprimir(pergunta);
+            try {
+                return scaneer.nextInt();
+            } catch (InputMismatchException e) {
+                imprimirLinha(30);
+                imprimir("Entrada Inválida!\nTente Novamente!");
+                imprimirLinha(30);
+                scaneer.next();
+            }
+        }
     }
 
 
