@@ -1,13 +1,22 @@
 public class Servico {
+    private int id;
     private String nome;
     private float preco;
-    private Funcionario funcionario;
-    private Cliente cliente;
+    private char tipo;
 
-    public Servico(String nome, float preco, Funcionario funcionario, Cliente cliente){
+    public Servico(int id, String nome, float preco, char tipo){
+        this.id = id;
         this.nome = nome;
         this.preco = preco;
-        this.funcionario = funcionario;
-        this.cliente = cliente;
+        this.tipo = tipo;
     }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public int getId(){
+        return id;
+    }
+
 }

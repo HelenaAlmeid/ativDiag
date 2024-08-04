@@ -25,8 +25,32 @@ public class Funcionario extends Pessoa {
         return cliente;
     }
     
-    public Servico cadastraServico(){
-        
+    public ServicoRealizado cadastrarServico(ArrayList<Cliente> clientes, ArrayList<Servico> servicos, Funcionario fun){
+        imprimirLinha(30);
+        imprimirCentralizado("Cadastro de Venda", 30);
+        imprimirLinha(30);
+        Cliente cliente = procurarCliente(clientes);
+        for(Servico servico: servicos){
+            imprimir(servico.getId() + "-" + servico.getNome());
+        }
+
+        int escolha = solicitarInt("Qual serviço será realizado: ");
+
+        Servico escolhido = null;
+
+        for(Servico servico: servicos){
+            if(escolha == servico.getId()){
+                escolhido = servico;
+                break;
+            }
+
+        }
+
+        imprimirLinha(30);
+        imprimirCentralizado("Venda registrada com sucesso", 30);
+        imprimirLinha(30);
+        return  new ServicoRealizado(fun, cliente, escolhido);
+
     }
 
 

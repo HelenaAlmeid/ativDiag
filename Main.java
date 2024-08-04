@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu {
+public class Main {
 
     public static void imprimirLinha(int quantidade){
         String linha = "";
@@ -76,11 +76,18 @@ public class Menu {
     public static void main(String[] args){
 
         ArrayList<Funcionario> funcionarios = new ArrayList<>();
+
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Servico> servicos = new ArrayList<>();
 
         Funcionario fun1 = new Funcionario("Julia", "111111", "30/01/2004", "123456789", 1200);
         funcionarios.add(fun1);
+        Cliente cliente = new Cliente("Doru", "222222", "bbb", "bbb");
+        clientes.add(cliente);
+        Servico ser1 = new Servico(1, "Lavagem Carro", 50, 'B');
+        servicos.add(ser1);
+        Servico ser2 = new Servico(2, "Lavagem Moto", 30, 'A');
+        servicos.add(ser2);
 
         while (true){
             imprimirLinha(30);
@@ -105,8 +112,7 @@ public class Menu {
                         clientes.add(fun.cadastrarCliente());
                         break;
                     case 3:
-                        //fun.cadastrarServico();
-                        imprimir("ola");
+                        fun.cadastrarServico(clientes, servicos, fun);
                         break;
                     default:
                         imprimirLinha(30);

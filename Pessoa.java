@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Pessoa {
+public abstract class Pessoa {
     private String nome;
     private String cpf;
     private String dataDeNascimento;
@@ -21,6 +22,21 @@ public class Pessoa {
 
     public String getNome(){
         return nome;
+    }
+
+    public Cliente procurarCliente(ArrayList<Cliente> clientes){
+        while (true) {
+            int verificar = 0;
+            String cpf = solicitarString("Digite o CPF do Cliente: ");
+            for(Cliente cliente: clientes){
+                String CPF = cliente.getCpf();
+                if (cpf.equals(CPF)){
+                    return cliente;
+                }
+            }
+            imprimir("O CPF não foi encontrado, tente novamente!");
+        }
+        
     }
 
     public static void imprimirLinha(int quantidade){
